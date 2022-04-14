@@ -1,15 +1,12 @@
-FROM node:9
+FROM node:14
+
+RUN mkdir /app
 
 WORKDIR /app
 
-RUN npm install -g contentful-cli
+COPY . /app
 
-COPY package.json .
-RUN npm install
+RUN npm i
 
-COPY . .
+CMD npm start
 
-USER node
-EXPOSE 3000
-
-CMD ["npm", "run", "start:dev"]
